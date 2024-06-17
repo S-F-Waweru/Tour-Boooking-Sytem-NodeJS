@@ -1,0 +1,12 @@
+/.env
+/node_modules
+/dist
+/BackgroundServise/node_modules
+/BackgroundServise/dist
+/BackgroundServise/.env
+
+/Tour Booking System Backend/node_modules
+/Tour Booking System Backend/dist
+/Tour Booking System Backend/.env
+
+.vscode

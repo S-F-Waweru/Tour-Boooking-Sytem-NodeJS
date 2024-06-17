@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to T2G!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+    }
+    .col-md-6 {
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card welcome-card" style="background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 5px; padding: 20px;">
+          <div class="card-body">
+            <h1>Sam's Tours</h1>
+            <h3 class="card-title" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 10px;">Tour <%=Tourname%> Booked!</h3>
+            <p class="card-text" style="color: #333; line-height: 1.5;">
+                Dear <%= Username %>
+                <br>
+                This Email is to a confirmation that you have booked the tour <%=Tourname%> that is booked for 
+                <%=Bookingdate%>. <br>
+            </p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" style="border-color: transparent;">
+                Your Booking ID  is : <%=BookingId%>
+              </li>
+              <li class="list-group-item" style="border-color: transparent;">
+                If you have  any questions or need help? Don't hesitate to reach out to our friendly <a href="#" style="color: #007bff; text-decoration: none;">support team</a>.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

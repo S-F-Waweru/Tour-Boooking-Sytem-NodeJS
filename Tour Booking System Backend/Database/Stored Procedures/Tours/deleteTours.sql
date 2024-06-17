@@ -1,0 +1,6 @@
+
+CREATE or alter PROCEDURE deleteTour(@Id VARCHAR(255))
+AS
+BEGIN
+    DELETE FROM Tours WHERE Id = @Id
+END

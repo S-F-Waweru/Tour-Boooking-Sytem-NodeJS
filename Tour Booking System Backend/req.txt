@@ -1,0 +1,5 @@
+express 
+@types/express
+ejs @types/ejs node-cron @types/node-cron nodemon @types/nodemon concurrently @types/concurrently bcrypt @types/bcrypt joi @types/joi
+
+dotenv @types/dotenv mssql @types/mssql jsonwebtoken @types/jsonwebtoken nodemailer @types/jsonwebtoken

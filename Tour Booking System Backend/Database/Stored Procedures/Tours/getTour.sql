@@ -1,0 +1,6 @@
+
+CREATE or alter PROCEDURE getTour(@Id VARCHAR(255))
+AS
+BEGIN
+    SELECT * FROM Tours WHERE Id = @Id
+END

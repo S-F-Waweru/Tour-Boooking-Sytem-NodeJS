@@ -1,0 +1,6 @@
+
+CREATE or alter PROCEDURE deleteHotel(@Id VARCHAR(255))
+AS
+BEGIN
+    DELETE FROM Hotels WHERE Id = @Id
+END

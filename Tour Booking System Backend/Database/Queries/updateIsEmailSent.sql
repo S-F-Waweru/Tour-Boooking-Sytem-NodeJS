@@ -1,0 +1,1 @@
+UPDATE Users SET isEmailSent=1 WHERE Id='${user.Id}'
