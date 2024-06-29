@@ -8,10 +8,13 @@ import { TourSchema } from "../Helpers";
 const dbInstance = new DBHelper()
 
 export const addTour = (req: Request, res: Response) => {
+    
 
     try {
+        console.log(req.body.addTour)
         const Id = uid()
         const { Name, Destination, Description, Price } = req.body
+        console.log(Description)
 
         const { error } = TourSchema.validate(req.body)
         if (error) {
@@ -52,7 +55,7 @@ export const getTour = async (req: Request<{ Id: string }>, res: Response) => {
         const tour = (await dbInstance.exec('getTour', { Id })).recordset as Tour[]
 
         if (tour.length != 0) {
-            return res.status(200).json(tour)
+            return res.status(200).json(tour[0])
         }
 
         return res.status(404).json("No Tour Macthes that ID!   -\(0_0)/-")
@@ -77,29 +80,30 @@ export const upadateTour = async (req: Request<{ Id: string }>, res: Response) =
 
         if (tour.length != 0) {
               dbInstance.exec('updateTour', { Id, Name, Destination, Description, Price })
-        res.status(200).json({ message: "Tour updated successfully" });
-        }
+        return res.status(200).json({ message: "Tour updated successfully" });
+        }else{
         return res.status(200).json({message : "Tour not Found"})
+
+        }
       
     } catch (error: any) {
         return res.status(500).json(error.message)
     }
 }
 
-export const deleteTour = async(req: Request<{ Id: string }>, res: Response)=>{
+export const deleteTour = async (req: Request<{ Id: string }>, res: Response) => {
     try {
-        const Id = req.params.Id
-        const tour = (await dbInstance.exec('getTour', { Id })).recordset as Tour[]
+        const Id = req.params.Id;
+        const tour = (await dbInstance.exec('getTour', { Id })).recordset as Tour[];
 
-        if (tour.length != 0) {
-            dbInstance.exec('deleteTour', { Id })
-            res.status(200).json({ message: "Tour Deleted  -\(>_<)/-" });
+        if (tour.length !== 0) {
+            await dbInstance.exec('deleteTour', { Id });
+            return res.status(200).json({ message: "Tour Deleted  -\(>_<)/-" });
+        } else {
+            return res.status(404).json({ message: "Tour Not Found-\(>_<)/-" });
         }
-        res.status(404).json({ message: "Tour Not Found-\(>_<)/-" });
-
-        
         
     } catch (error:any) {
-        return res.status(500).json(error.message)
+        return res.status(500).json(error.message);
     }
 }

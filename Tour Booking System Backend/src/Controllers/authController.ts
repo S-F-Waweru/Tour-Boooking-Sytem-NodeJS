@@ -101,7 +101,13 @@ export async function loginUser(req: Request, res: Response) {
 
                 // create a token
                 const token = jwt.sign(payload, process.env.SECRET as string, { expiresIn: '2h' })
-                return res.status(200).json({ message: "Login Successfull!!", token })
+                //get user role
+                const getRole = (await dbInstance.exec('getUserRole', {UserId : payload.Sub})).recordset as Role[]
+                console.log(getRole[0].Role)
+                const role = getRole[0].Role
+                const userId = payload.Sub
+
+                return res.status(200).json({ message: "Login Successfull!!", token, role, userId})
             }
 
             return res.status(404).json({ message: "Invalid Credentials !!" })

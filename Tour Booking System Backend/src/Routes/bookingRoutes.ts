@@ -6,10 +6,10 @@ const bookingRouter = Router()
 
 bookingRouter.post("",verifyToken, addBooking)
 bookingRouter.get("",verifyToken, ifAdmin, getbookings)
-bookingRouter.get("/:Id",verifyToken, checkUserPermission,getBooking)
-bookingRouter.get("/user/:Id",verifyToken, checkUserPermission, getUserBookings)
-bookingRouter.put("/:Id",verifyToken, checkUserPermission, updateBooking)
-bookingRouter.delete("/:Id",verifyToken, checkUserPermission, deleteBooking)
+bookingRouter.get("/:Id",verifyToken, checkUserPermission||ifAdmin,getBooking)
+bookingRouter.get("/user/:Id",verifyToken, checkUserPermission ||ifAdmin, getUserBookings)
+bookingRouter.put("/:Id",verifyToken, checkUserPermission ||ifAdmin, updateBooking)
+bookingRouter.delete("/:Id",verifyToken, checkUserPermission ||ifAdmin, deleteBooking)
 
 export default bookingRouter
 

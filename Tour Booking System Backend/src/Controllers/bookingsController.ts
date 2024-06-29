@@ -123,9 +123,11 @@ export const deleteBooking = async (req: Request<{ Id: string }>, res: Response)
         if(booking.length!==0){
             await dbInstance.exec('deleteBooking', {Id})
             return res.status(200).json({message : "Booking deleted "})
+        }else{
+        return res.status(404).json({message : "Booking not found "})
+
         }
 
-        return res.status(404).json({message : "Booking not found "})
 
        
 
