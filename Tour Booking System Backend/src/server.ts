@@ -5,10 +5,12 @@ import { ifAdmin, verifyToken } from '../Middleware'
 import hotelRouter from './Routes/hotelRoutes'
 import bookingRouter from './Routes/bookingRoutes'
 import adminRouter from './Routes/adminRoutes'
+import cors from 'cors'
 
 const app = express()
 
 //middleware
+app.use(cors)
 app.use(json())
 
 app.use("/auth",authRouter )
